@@ -33,6 +33,7 @@
 			<figcaption class="info-wrap">
 				<a href="{% url 'product_detail' product.id %}" class="title">{{ product.product_name }}</a>
 				<div class="price mt-1">${{ product.price }}</div> <!-- price-wrap.// -->
+				<a href="{% url 'product_detail' product.id %}" class="btn btn-block btn-primary"> <span class="text">View Details</span>   </a>
 			</figcaption>
 		</div>
 	</div> <!-- col.// -->

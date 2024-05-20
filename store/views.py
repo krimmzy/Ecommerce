@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404
 from .models import Product
 from category.models import Category
@@ -48,13 +49,15 @@ def product_detail(request, product_id):
 	try:
 		product = get_object_or_404(Product, pk=product_id)
 		in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=product).exists()
+		similar_products = Product.objects.filter(category=product.category).exclude(id=product_id)
 
 	except Exception as e:
 		raise e
 
 	context = {
 		'product': product,
-		'in_cart': in_cart
+		'in_cart': in_cart,
+		'similar_products': similar_products,
 	}
 	return render(request, 'store/product_detail.html', context)
 
