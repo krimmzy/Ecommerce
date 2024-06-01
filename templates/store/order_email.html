@@ -1,0 +1,35 @@
+<!-- {% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Your Order Details</h1>
+{% endblock %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Your Order Details</title>
+
+<body>
+	<h1>Your Order Details</h1>
+	<p>First Name: {{ first_name }}</p>
+	<p>Last Name: {{ last_name }}</p>
+	<p>Email: {{ email }]</p>
+	<p>Phone NUMBER {{ phone_number }}</p>
+	<p>Address {{ address }}</p>
+	<p>City {{ city }}</p>
+	<p>State {{ state }}</p>
+	<p>Country {{ Country }}</p>
+
+
+	<h2>Cart Items</h2>
+	<ul>
+		{% for cart_item in cart_items %}
+		<li>{{ cart_item.product.product_name }}</li>
+		{% endfor %}
+	</ul>
+</head>
+</body>
+</html>

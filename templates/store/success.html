@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Form Submitted Successfully</h1>
+<p>Thank you for your order</p>
+
+<a href="{% url 'store' %}" class="btn btn-success btn-block">Back to store</a>
+{% endblock %}

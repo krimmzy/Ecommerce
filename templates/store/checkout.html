@@ -3,87 +3,79 @@
 
 {% block content %}
 
-<section class="section-content padding-y bg">
-<div class="container">
+<!-- <section class="section-content padding-y bg">
+<div class="container"> -->
 
 <!-- ============================ COMPONENT 1 ================================= -->
-<div class="row">
-	<aside class="col-lg-6">
-<div class="card">
-	<div class="card-body">
-		<h4 class="card-title mb-4">Billing Address</h4>
-		<form action="">
-			<div class="form-row">
-				<div class="col form-group">
-					<label for="">First Name</label>
-					<input type="text" name="first_name" class="form-control" required>
+<!-- <title>Shipping Form</title> -->
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<h1 class="mt-4 mb-4">Shipping Form</h1>
+			<form method="POST" action="{% url 'shipping_form' %}" >
+				{% csrf_token %}
+				{{ form.as_p }}
+				<div class="form-group">
+				<label for="id_first_name">First Name:</label>
+				<input type="text" id="id_first_name" name="first_name">
+				{{ form.first_name }}
 				</div>
-				<div class="col form-group">
-					<label for="">Last Name</label>
-					<input type="text" name="last_name" class="form-control" required>
+				<div class="form-group">
+				<label for="id_last_name">Last Name:</label>
+				<input type="text" id="id_last_name" name="last_name">
+				{{ form.last_name }}
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col form-group">
-					<label for="">Email</label>
-					<input type="email" name="email" class="form-control" required>
+				<div class="form-group">
+				<label for="id_phone_number">Phone Number:</label>
+				<input type="text" id="id_phone_number" name="phone_number">
+				{{ form.phone_number }}
 				</div>
-				<div class="col form-group">
-					<label for="">Phone Number</label>
-					<input type="text" name="phone" class="form-control" required>
+				<div class="form-group">
+				<label for="id_address">Address:</label>
+				<textarea type="text" id="id_address" name="address"></textarea>
+				{{ form.Address }}
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col form-group">
-					<label for="">Address Line 1</label>
-					<input type="text" name="address_line_1" class="form-control" required>
+				<div class="form-group">
+				<label for="id_city">City:</label>
+				<input type="text" id="id_city" name="city">
+				{{ form.city }}
 				</div>
-				<div class="col form-group">
-					<label for="">Address Line 2</label>
-					<input type="text" name="address_line_2" class="form-control">
+				<div class="form-group">
+				<label for="id_state">State:</label>
+				<input type="text" id="id_state" name="state">
+				{{ form.state }}
 				</div>
-			</div>
-			<div class="form-row">
-				<div class="col form-group">
-					<label for="">city</label>
-					<input type="text" name="city" class="form-control" required>
+				<div class="form-group">
+				<label for="id_country">Country:</label>
+				<input type="text" id="id_country" name="country">
+				{{ form.country }}
 				</div>
-				<div class="col form-group">
-					<label for="">state</label>
-					<input type="text" name="state" class="form-control" required>
+				<div class="form-group">
+				<label for="id_email">Email:</label>
+				<input type="email" id="id_email" name="email">
+				{{ form.email }}
 				</div>
-				<div class="col form-group">
-					<label for="">Country</label>
-					<input type="text" name="country" class="form-control" required>
-				</div>
-			</div>
-			<div class="form-row">
-				<label for="">Order Note</label>
-				<textarea name="order_note" rows="2" class="form-control"></textarea>
-			</div>
-		</form>
-	</div>
-</div> <!-- card.// -->
+				<button type='submit'>Submit</button>
 
-	</aside> <!-- col.// -->
-	<aside class="col-lg-6">
+				{% for cart_item in cart_items %}
+				<input type="hidden" class="title text-dark" name="cart_items[]" value="{{ cart_item.product.product_name }}">
+				<input type="hidden" class="form-control"  name="cart_quantities[]" value="{{ cart_item.quantity }}">
+				{% endfor %}
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- </aside> 
+<aside class="col-lg-6">
 
 		<div class="card">
 		<div class="card-body">
+			 -->
 			
-			<a href="./place-order.html" class="btn btn-primary btn-block"> Place Order </a>
-			<a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
-		</div> <!-- card-body.// -->
-		</div> <!-- card.// -->
-
-</aside> <!-- col.// -->
-
-
-</div> <!-- row.// -->
-<!-- ============================ COMPONENT 1 END .// ================================= -->
-
-</div> <!-- container .//  -->
-</section>
+			<!-- <a href="./place-order.html" class="btn btn-primary btn-block"> Place Order </a> -->
+			<!-- <a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a> -->
 <!-- ========================= SECTION CONTENT END// ========================= -->
 
 {% endblock %}
